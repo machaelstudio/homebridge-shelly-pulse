@@ -1,0 +1,44 @@
+{
+  "name": "homebridge-shelly-pulse",
+  "displayName": "Shelly Pulse",
+  "version": "1.0.0",
+  "description": "Shelly relays in Apple Home as a switch that turns itself off after a few seconds, or as a garage door. For garage doors, gates and door buzzers.",
+  "author": "machaelstudio",
+  "license": "MIT",
+  "homepage": "https://github.com/machaelstudio/homebridge-shelly-pulse#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/machaelstudio/homebridge-shelly-pulse.git"
+  },
+  "bugs": {
+    "url": "https://github.com/machaelstudio/homebridge-shelly-pulse/issues"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib",
+    "config.schema.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "supports-hap",
+    "shelly",
+    "garage door",
+    "gate",
+    "relay",
+    "homekit"
+  ],
+  "engines": {
+    "homebridge": "^1.8.0 || ^2.0.0-beta.0",
+    "node": "^22.12.0 || ^24.0.0 || ^26.0.0"
+  },
+  "devDependencies": {
+    "homebridge": "^2.0.0"
+  }
+}

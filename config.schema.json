@@ -1,0 +1,97 @@
+{
+  "pluginAlias": "ShellyPulse",
+  "pluginType": "platform",
+  "singular": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "default": "Shelly Pulse",
+        "required": true
+      },
+      "devices": {
+        "title": "Shelly relays",
+        "type": "array",
+        "items": {
+          "title": "Shelly relay",
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Name in Home",
+              "type": "string",
+              "placeholder": "Garage Door",
+              "required": true
+            },
+            "host": {
+              "title": "IP address of the Shelly",
+              "type": "string",
+              "placeholder": "192.168.1.50",
+              "description": "Give the Shelly a fixed address in your router, so this keeps working.",
+              "required": true
+            },
+            "type": {
+              "title": "Show in Home as",
+              "type": "string",
+              "default": "switch",
+              "oneOf": [
+                { "title": "Switch", "enum": ["switch"] },
+                { "title": "Garage door", "enum": ["garageDoor"] }
+              ],
+              "required": true
+            },
+            "pulseSeconds": {
+              "title": "Relay switches off again after (seconds)",
+              "type": "number",
+              "default": 2,
+              "minimum": 0,
+              "description": "How long the relay stays on. A switch in Home goes back to off at the same moment. 0 leaves a switch on until you turn it off."
+            },
+            "autoCloseSeconds": {
+              "title": "Door closes by itself after (seconds)",
+              "type": "number",
+              "default": 0,
+              "minimum": 0,
+              "description": "For a gate or door that closes on its own. Home shows it closed again this long after you open it, and closing it in Home does not press the relay. 0 means the door stays open until you close it, which presses the relay again.",
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && model.devices[arrayIndices].type === 'garageDoor';"
+              }
+            },
+            "doorTravelSeconds": {
+              "title": "Time the door takes to open or close (seconds)",
+              "type": "number",
+              "default": 15,
+              "minimum": 1,
+              "condition": {
+                "functionBody": "return model.devices && model.devices[arrayIndices] && model.devices[arrayIndices].type === 'garageDoor';"
+              }
+            },
+            "channel": {
+              "title": "Relay number",
+              "type": "integer",
+              "default": 0,
+              "minimum": 0,
+              "description": "0 for a Shelly with one relay. On a Shelly with several, the first relay is 0."
+            },
+            "password": {
+              "title": "Password",
+              "type": "string",
+              "description": "Only if you set a password on the Shelly itself."
+            },
+            "pollSeconds": {
+              "title": "Check the relay every (seconds)",
+              "type": "number",
+              "default": 5,
+              "minimum": 0,
+              "description": "Keeps a switch in step with the wall input and the Shelly app. 0 turns the check off.",
+              "condition": {
+                "functionBody": "return !model.devices || !model.devices[arrayIndices] || model.devices[arrayIndices].type !== 'garageDoor';"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
