@@ -1,7 +1,7 @@
 {
   "name": "homebridge-shelly-pulse",
   "displayName": "Shelly Pulse",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shelly relays in Apple Home as a switch that turns itself off after a few seconds, or as a garage door. For garage doors, gates and door buzzers.",
   "author": "machaelstudio",
   "license": "MIT",

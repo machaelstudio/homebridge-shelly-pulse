@@ -4,12 +4,12 @@
   "singular": true,
   "schema": {
     "type": "object",
+    "required": ["name"],
     "properties": {
       "name": {
         "title": "Name",
         "type": "string",
-        "default": "Shelly Pulse",
-        "required": true
+        "default": "Shelly Pulse"
       },
       "devices": {
         "title": "Shelly relays",
@@ -17,19 +17,18 @@
         "items": {
           "title": "Shelly relay",
           "type": "object",
+          "required": ["name", "host", "type"],
           "properties": {
             "name": {
               "title": "Name in Home",
               "type": "string",
-              "placeholder": "Garage Door",
-              "required": true
+              "placeholder": "Garage Door"
             },
             "host": {
               "title": "IP address of the Shelly",
               "type": "string",
               "placeholder": "192.168.1.50",
-              "description": "Give the Shelly a fixed address in your router, so this keeps working.",
-              "required": true
+              "description": "Give the Shelly a fixed address in your router, so this keeps working."
             },
             "type": {
               "title": "Show in Home as",
@@ -38,8 +37,7 @@
               "oneOf": [
                 { "title": "Switch", "enum": ["switch"] },
                 { "title": "Garage door", "enum": ["garageDoor"] }
-              ],
-              "required": true
+              ]
             },
             "pulseSeconds": {
               "title": "Relay switches off again after (seconds)",

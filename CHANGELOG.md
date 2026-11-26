@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 (2026-11-26)
+
+- The settings schema now lists its required fields the standard JSON Schema
+  way, which Homebridge's plugin checks require. The settings form looks and
+  behaves the same.
+
 ## 1.0.0 (2026-11-26)
 
 First public release.
